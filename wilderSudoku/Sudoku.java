@@ -1,5 +1,7 @@
 package wilderSudoku;
 
+import exceptions.ForeignPuzzleException;
+
 /**
  * This is the class that is used for connecting to displayer, loaders, and solvers..
  * 
@@ -23,26 +25,29 @@ public class Sudoku {
 		this.load();
 	}
 	/**
-	 * Sets the Displayer
+	 * Sets the Displayer. Passes a clone of the puzzle to the Displayer
 	 * @param displayer
 	 */
 	public void setDisplayer(Displayer displayer) {
 		this.displayer=displayer;
-		this.displayer.connect(this.puzzle);
+		assert this.puzzle instanceof Puzzle:"setDisplayer() no puzzle in this.puzzle";
+		this.displayer.connect((Puzzle)this.puzzle.clone());
 	}
 	/**
-	 * Sets the Solver
+	 * Sets the Solver. Passes a clone of the puzzzle to the Solver.
 	 * @param solver
 	 */
 	public void setSolver(Solver solver){
 		this.solver=solver;
-		solver.connect(this.puzzle);
+		solver.connect((Puzzle)this.puzzle.clone());
 	}
+	
 	
 	/**
 	 * Activates the load method of of the {@link wilderSudoku.Loader Loader}
 	 */
-	public void load(){
+	private void load(){
+		assert loader.load() instanceof Puzzle: "The loader has no puzzle";
 		this.puzzle=loader.load();
 	}
 	/**
@@ -50,15 +55,21 @@ public class Sudoku {
 	 * @return the amount solved.
 	 * 
 	 */
-	public int solve(){
+	public int solve()throws ForeignPuzzleException{
 		int solved=solver.solve();
-		this.puzzle= solver.getPuzzle();
+		Puzzle solvedPuzzle= solver.getPuzzle();
+		if(validatePuzzle(solvedPuzzle)==false){
+			throw new ForeignPuzzleException();
+		}
+		
+		this.puzzle= solvedPuzzle;
 		return solved;
 	}
 	/**
 	 * Activate the display method of the {@link wilderSudoku.Displayer Displayer}
 	 */
 	public void display(){
+		displayer.connect((Puzzle)this.puzzle.clone());//added
 		displayer.display();
 	}
 	/**
@@ -67,6 +78,26 @@ public class Sudoku {
 	 */
 	public Puzzle getpuzzle(){
 		return this.puzzle;
+	}
+	
+	
+	public boolean validatePuzzle(Puzzle testPuzzle){
+		//check to see if the locked squares in the original puzzle and the values are the same matches the
+		//check squares in the testPuzzle if the equal return true if they don't return false;
+		for(int y =0; y<9; y++){
+			for(int x=0; x<9; x++){
+				if(this.puzzle.getSquareLocked(x, y)){
+					if(this.puzzle.getSquareValue(x, y).equals(testPuzzle.getSquareValue(x, y))){
+						continue;
+						
+					}else
+					{
+						return false;
+					}
+				}
+			}
+		}
+		return true;
 	}
 	
 	/**
