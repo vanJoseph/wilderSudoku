@@ -126,26 +126,25 @@ public class Square implements Cloneable {
 	 * @param value
 	 * @param possibles
 	 */
-	private void copy(boolean locked, boolean initial, Number value, TreeSet<Number> possibles) {
+	private void copy(boolean locked, boolean initial, Number value) {
 		this.isInitial = initial;
 		this.value = value;
-		this.possibles = possibles;
 		this.isLocked = locked;
 	}
 
 	/**
 	 * Makes a deep copy of the Square object
 	 */
-	@SuppressWarnings("unchecked")
+	
 	@Override
 	public Object clone() {
 		boolean copyIsLocked = this.isLocked;
 		boolean copyIsInitial = this.isInitial;
 		Number copyValue = this.value;
-		TreeSet<Number> copyPossibles = (TreeSet<Number>) this.possibles.clone();
+		
 
 		Square copySquare = new Square();
-		copySquare.copy(copyIsLocked, copyIsInitial, copyValue, copyPossibles);
+		copySquare.copy(copyIsLocked, copyIsInitial, copyValue );
 		return copySquare;
 
 	}

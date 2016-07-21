@@ -10,12 +10,12 @@ import wilderSudoku.Square;
 
 public class ConsoleDisplayer extends Displayer {
 
-	 
+	@Override
 	public void connect(Puzzle puzzle) {
 		this.puzzle=puzzle;
 
 	}
-
+	//used for testing
 	public void printPossibles() {
 		for(int y=0; y<9; y++){
 			for(int x=0;x<9;x++){

@@ -16,7 +16,7 @@ public abstract class Displayer {
 	 * @param puzzle
 	 * @see {@link wilderSudoku.Puzzle Puzzle}
 	 */
-	 void connect(Puzzle puzzle){
+	public void connect(Puzzle puzzle){
 		this.puzzle=puzzle;
 	}
 	/**

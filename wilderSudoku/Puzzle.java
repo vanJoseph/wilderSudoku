@@ -329,11 +329,32 @@ public class Puzzle implements Cloneable {
 	 * Makes a deep copy of the puzzle
 	 */
 	public Object clone(){
-		Square[][] copySquares= new Square[8][8].clone();
-		Puzzle copyPuzzle= new Puzzle();
-		copyPuzzle.copySquares(copySquares);
+		Puzzle copyPuzzle=new Puzzle();
+		for(int y=0; y<9;y++){
+			for(int x=0; x<9; x++){
+				copyPuzzle.squares[y][x]=(Square)this.squares[y][x].clone();
+			}
+		}
 		return copyPuzzle;
 		
+	}
+	@Override
+	public boolean equals(Object compare){
+		if(!(compare instanceof Puzzle)){
+			return false;
+		}
+		Puzzle otherPuzzle= (Puzzle)compare;
+		 
+		for(int y= 0; y<9; y++){
+			for(int x=0; x<9; x++){
+				if(this.getSquareValue(x, y).equals(otherPuzzle.getSquareValue(x, y))){
+					continue;
+				}else{
+					return false;
+				}
+			}
+		}
+		return true;
 	}
 
 }
