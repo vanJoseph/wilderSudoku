@@ -1,4 +1,7 @@
 package com.wildercoding.sudoku;
+
+import com.wildercoding.sudoku.exceptions.ForeignPuzzleException;
+
 /**
  * This is the class that is used for connecting to displayer, loaders, and solvers..
  * 
@@ -41,14 +44,14 @@ public class Sudoku {
 	
 	
 	/**
-	 * Activates the load method of of the {@link wilderSudoku.Loader Loader}
+	 * Activates the load method of of the Loader
 	 */
 	private void load(){
 		assert loader.load() instanceof Puzzle: "The loader has no puzzle";
 		this.puzzle=loader.load();
 	}
 	/**
-	 * Activate the solve method of the {@link wilderSudoku.Solver Solver} and return the number solved
+	 * Activate the solve method of the Solverand return the number solved
 	 * @return the amount solved.
 	 * 
 	 */
@@ -63,7 +66,7 @@ public class Sudoku {
 		return solved;
 	}
 	/**
-	 * Activate the display method of the {@link wilderSudoku.Displayer Displayer}
+	 * Activate the display method of the Displayer
 	 */
 	public void display(){
 		displayer.connect((Puzzle)this.puzzle.clone());//added
@@ -98,8 +101,7 @@ public class Sudoku {
 	}
 	
 	/**
-	 * Returns a String of the puzzle used.
-	 * @see {@link wilderSudoku.Puzzle Puzzle}
+	 * Returns a String of the puzzle used
 	 */
 	@Override
 	public String toString(){
