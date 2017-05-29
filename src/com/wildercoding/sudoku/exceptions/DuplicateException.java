@@ -1,4 +1,4 @@
-package exceptions;
+package com.wildercoding.sudoku.exceptions;
 
 public class DuplicateException extends RuntimeException {
 
