@@ -1,5 +1,10 @@
 package com.wildercoding.sudoku;
 
+import com.wildercoding.sudoku.exceptions.InitializationException;
+import com.wildercoding.sudoku.exceptions.InvalidCoordinateException;
+import com.wildercoding.sudoku.exceptions.InvalidSetException;
+import com.wildercoding.sudoku.exceptions.InvalidValueException;
+
 import java.util.TreeSet;
 
 /**
@@ -85,16 +90,15 @@ public class Puzzle implements Cloneable {
     }
 
     /**
-     * Initialize the value of a {@link wilderSudoku.Square Square}, making the fields isLocked and isInital false and setting the Square value
+     * Initialize the value of a Square, making the fields isLocked and isInital false and setting the Square value
      * to the constant Number.EMPTY.
      *
      * @param x     index value of a 9x9 array
      * @param y     index value of a 9x9 array
-     * @param value constant of {@link wilderSudoku.Number Number}
      * @throws InitializationException    if the square is not null
      * @throws InvalidCoordinateException if the coordinates aren't index values of a 9x9 array
      */
-    public void setEmptySquare(int x, int y) throws InvalidCoordinateException, InitializationException {
+    public void setEmptySquare(int x, int y)  {
         // Checks that the coordinates are in the right range
         if (x > 8 || x < 0 || y > 8 || y < 0) {
             throw new InvalidCoordinateException("Invalid coordinates: (" + x + "," + y + ")");
@@ -112,12 +116,13 @@ public class Puzzle implements Cloneable {
      *
      * @param x     index value of a 9x9 array
      * @param y     index value of a 9x9 array
-     * @param value constant of {@link wilderSudoku.Number Number}
+     * @param value constant of Number}
      * @throws InitializationException    if the square is not null
      * @throws InvalidCoordinateException if the coordinates aren't index values of a 9x9 array
      * @throws InvalidSetException
      */
-    public void setSquare(int x, int y, Number value) throws InvalidCoordinateException, InitializationException, InvalidSetException {
+    public void setSquare(int x, int y, Number value)
+    {
         // Checks that the coordinates are in the right range
         if (x > 8 || x < 0 || y > 8 || y < 0) {
             throw new InvalidCoordinateException("Invalid coordinates: (" + x + "," + y + ")");
@@ -167,20 +172,14 @@ public class Puzzle implements Cloneable {
      * @return true if the vertical unit is filled, false if it is not
      * @throws InvalidCoordinateException
      */
-    public boolean checkVerticalComplete(int vertNumber) throws InvalidCoordinateException {
+    public boolean checkVerticalComplete(int vertNumber){
         if (vertNumber < 0 || vertNumber > 8)
             throw new InvalidCoordinateException("Invalid vertNumber: " + vertNumber);
         for (int index = 1; index <= 9; index++) {
-            try {
+
                 if (checkVertical(vertNumber, Number.valueOf(index)) == false)
                     return false;
-            } catch (InvalidValueException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            } catch (InvalidCoordinateException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+
 
         }
         return true;
@@ -189,7 +188,7 @@ public class Puzzle implements Cloneable {
     /**
      * Checks to see if an horizontal unit is filled with numbers
      *
-     * @param HoriNumber the index value of the horizontal unit to check
+     * @param horiNumber the index value of the horizontal unit to check
      * @return true if the unit if is filled, false if the unit is not
      * @throws InvalidCoordinateException if the
      */
@@ -198,13 +197,9 @@ public class Puzzle implements Cloneable {
             throw new InvalidCoordinateException("Invalid vertNumber: " + horiNumber);
         for (int index = 1; index <= 9; index++) {
 
-            try {
                 if (checkHorizontal(horiNumber, Number.valueOf(index)) == false)
                     return false;
-            } catch (InvalidValueException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
+
 
         }
         return true;
@@ -213,19 +208,15 @@ public class Puzzle implements Cloneable {
     /**
      * Checks to see if an area is completely filled with numbers
      *
-     * @param areaValue the {@linkplain wilderSudoku.Area Area} to search
+     * @param areaValue the  Area to search
      * @return true if the area is complete, false if it is not
      * @throws InvalidValueException
      */
     public boolean checkAreaComplete(Area areaValue) {
         for (int index = 1; index <= 9; index++) {
-            try {
+
                 if (checkArea(areaValue, Number.valueOf(index)) == false)
                     return false;
-            } catch (InvalidValueException e) {
-                // TODO Auto-generated catch block
-                e.printStackTrace();
-            }
 
         }
         return true;
@@ -236,11 +227,10 @@ public class Puzzle implements Cloneable {
      * vertical unit
      *
      * @param vertNumber an index value of which horizontal
-     * @param number     a {@linkplain wilderSudoku.Number Number}
+     * @param number     a Number
      * @return true if the number is there, false if the number is not there
-     * @throws InvalidCoordinateException if vertNumber is not of value 0-8
      */
-    public boolean checkVertical(int vertNumber, Number number) throws InvalidCoordinateException {
+    public boolean checkVertical(int vertNumber, Number number)  {
         if (vertNumber < 0 || vertNumber > 8)
             throw new InvalidCoordinateException("Invalid vertNumber: " + vertNumber);
 
@@ -257,11 +247,11 @@ public class Puzzle implements Cloneable {
      * horizontal unit
      *
      * @param horiNumber an index value of which horizontal
-     * @param number     a {@linkplain wilderSudoku.Number Number}
+     * @param number     a  Number
      * @return true if the number is there, false if the number is not there
      * @throws InvalidCoordinateException if vertNumber is not of value 0-8
      */
-    public boolean checkHorizontal(int horiNumber, Number number) throws InvalidCoordinateException {
+    public boolean checkHorizontal(int horiNumber, Number number)  {
         if (horiNumber < 0 || horiNumber > 8)
             throw new InvalidCoordinateException("Invalid horiNumber: " + horiNumber);
 
@@ -276,10 +266,10 @@ public class Puzzle implements Cloneable {
     /**
      * Checks an area for a specific for a Number constant
      *
-     * @param areaNumber an {@linkplain wilderSudoku.Area Area}
-     * @param number     a {@linkplain wilderSudoku.Number Number}
+     * @param areaNumber an  wilderSudoku.Area Area
+     * @param number     a wilderSudoku.Number Number
      * @return true if the number is there, false if the number is not there
-     * @see {@link wilderSudoku.Area Area} {@link wilderSudoku.Number Number}
+     * @see  Area  wilderSudoku.Number Number
      */
     public boolean checkArea(Area areaNumber, Number number) {
 
