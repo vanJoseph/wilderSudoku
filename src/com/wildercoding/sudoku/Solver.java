@@ -1,10 +1,5 @@
-package wilderSudoku;
-
+package com.wildercoding.sudoku;
 import java.util.ArrayList;
-import exceptions.InitializationException;
-import exceptions.InvalidCoordinateException;
-import exceptions.InvalidSetException;
-import exceptions.InvalidValueException;
 
 /**
  * The solver class is used by the Sudoku system in order to apply solving

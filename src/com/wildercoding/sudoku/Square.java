@@ -1,8 +1,5 @@
-package wilderSudoku;
-
+package com.wildercoding.sudoku;
 import java.util.TreeSet;
-
-import exceptions.InvalidSetException;
 
 /**
  * This is the basic holding unit for a Puzzle

@@ -1,15 +1,4 @@
-package wilderSudoku;
-
-import java.io.FileNotFoundException;
-
-import displayers.ConsoleDisplayer;
-import exceptions.ForeignPuzzleException;
-import exceptions.InitializationException;
-import exceptions.InvalidCoordinateException;
-import exceptions.InvalidSetException;
-import exceptions.InvalidValueException;
-import loaders.FileLoader;
-import solvers.DeductionSolver;
+package com.wildercoding.
 
 /**
  * This class is used for development purposes
@@ -19,12 +8,12 @@ import solvers.DeductionSolver;
  */
 public class Main {
 	public static void main(String[] args) throws FileNotFoundException, InvalidCoordinateException, InitializationException, InvalidSetException, InvalidValueException, ForeignPuzzleException {
-		Puzzle puzzle1 = new FileLoader("../wilderSudoku/puzzles/easy/puzzle03.txt").load();
-		Puzzle puzzle2 = new FileLoader("../wilderSudoku/puzzles/easy/puzzle02.txt").load();
+		Puzzle puzzle1 = new FileLoader("/puzzles/easy/puzzle03.txt").load();
+		Puzzle puzzle2 = new FileLoader("/puzzles/easy/puzzle02.txt").load();
 //		System.out.println("Puzzle 1: \n" + puzzle1+ "\n Puzzle 2: \n"+puzzle2);
 //		System.out.println("Is puzzle1 equal to puzzle 2?: " +puzzle1.equals(puzzle2));
 		Sudoku sudoku=new Sudoku();
-		FileLoader loader=new FileLoader("../wilderSudoku/puzzles/easy/puzzle03.txt");
+		FileLoader loader=new FileLoader("/puzzles/easy/puzzle03.txt");
 		sudoku.setLoader(loader);
 		sudoku.setDisplayer(new ConsoleDisplayer());
 		

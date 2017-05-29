@@ -1,6 +1,4 @@
-package wilderSudoku;
-
-import exceptions.InvalidValueException;
+package com.wildercoding.sudoku;
 
 /**
  * The standard representation of values that can be held by a sudoku puzzle
@@ -28,13 +26,9 @@ public enum Number {
 	 * 
 	 * @param value
 	 *            an int of 0-9
-	 * @return {@linkplain wilderSudoku.Number Number}
-	 * @throws InvalidValueException
 	 *             if the value is not of int 0-9
 	 */
-	public static Number valueOf(int value) throws InvalidValueException {
-		if (value < 0 || value > 9)
-			throw new InvalidValueException("Invalid Value: " + value);
+	public static Number valueOf(int value) {
 		switch (value) {
 		case 0:
 			return EMPTY;
@@ -57,7 +51,7 @@ public enum Number {
 		case 9:
 			return NINE;
 		default:
-			throw new InvalidValueException();
+			return null;
 		}
 
 	}
@@ -65,10 +59,8 @@ public enum Number {
 	/**
 	 * Returns the Number of a character representation of the value 0-9
 	 * @param value a char of the numbers 0-9
-	 * @return {@linkplain wilderSudoku.Number Number }
-	 * @throws InvalidValueException if the value is not the char is not a representation of the value 0-9
 	 */
-	public static Number valueOf(char value) throws InvalidValueException {
+	public static Number valueOf(char value) {
 
 		switch (value) {
 		case '0':
@@ -92,7 +84,7 @@ public enum Number {
 		case '9':
 			return NINE;
 		default:
-			throw new InvalidValueException("Invalid Value: " + value);
+			return null;
 		}
 	}
 

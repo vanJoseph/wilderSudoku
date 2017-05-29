@@ -1,4 +1,4 @@
-package wilderSudoku;
+package com.wildercoding.sudoku;
 /**
  * The Coord class holds x and y values. 
  * @author Donovan J. Wilder

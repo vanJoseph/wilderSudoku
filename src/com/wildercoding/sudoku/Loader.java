@@ -1,5 +1,4 @@
-package wilderSudoku;
-
+package com.wildercoding.sudoku;
 /**
  * Provides operation that supports different puzzle loading methods. It is used
  * by the Sudoku system for different loading operations.

@@ -1,7 +1,4 @@
-package wilderSudoku;
-
-import exceptions.ForeignPuzzleException;
-
+package com.wildercoding.sudoku;
 /**
  * This is the class that is used for connecting to displayer, loaders, and solvers..
  * 

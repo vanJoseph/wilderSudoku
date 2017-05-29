@@ -1,6 +1,4 @@
-package wilderSudoku;
-
-
+package com.wildercoding.sudoku;
 /**
  * Displayer is an abstract class that is used by the Sudoku system for output. This class
  * provides basic functions essential for the output of a sudoku puzzle.

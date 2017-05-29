@@ -1,8 +1,4 @@
-package wilderSudoku;
-
-import exceptions.InvalidAreaException;
-import exceptions.InvalidCoordinateException;
-
+package com.wildercoding.sudoku;
 /**
  * The Standard constant for referring to areas in sudoku. An area in the puzzle is a 
  * section of the 9x9 puzzle when it is equally divided into 3x3 pieces. the first section when looking at a puzzle from the top
