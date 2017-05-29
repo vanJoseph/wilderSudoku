@@ -1,21 +1,17 @@
-package loaders;
+package com.wildercoding.sudoku.loaders;
+
+import com.wildercoding.sudoku.Loader;
+import com.wildercoding.sudoku.Puzzle;
+import com.wildercoding.sudoku.exceptions.InitializationException;
+import com.wildercoding.sudoku.exceptions.InvalidCoordinateException;
+import com.wildercoding.sudoku.exceptions.InvalidValueException;
+import com.wildercoding.sudoku.Number;
 
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.util.TreeSet;
 
-import exceptions.InitializationException;
-import exceptions.InvalidCharacterException;
-import exceptions.InvalidCoordinateException;
-import exceptions.InvalidFormatException;
-import exceptions.InvalidValueException;
-import wilderSudoku.Coord;
-import wilderSudoku.Loader;
-import wilderSudoku.Number;
-import wilderSudoku.Puzzle;
-import wilderSudoku.Square;
 /**
  * FileLoader is used to read puzzles from a file that is in the Sudoku format.
  * It extends the {@link wilderSudoku.Loader Loader } interface.
