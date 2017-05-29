@@ -1,5 +1,4 @@
-package exceptions;
-
+package com.wildercoding.sudoku.exceptions;
 public class InvalidValueException extends Exception {
 	
 	public InvalidValueException(String message){
