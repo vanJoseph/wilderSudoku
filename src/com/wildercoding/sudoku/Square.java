@@ -1,4 +1,6 @@
 package com.wildercoding.sudoku;
+import com.wildercoding.sudoku.exceptions.InvalidSetException;
+
 import java.util.TreeSet;
 
 /**
@@ -6,7 +8,6 @@ import java.util.TreeSet;
  * 
  * @author Donovan J. Wilder
  * @since 2016-07-08
- * @see {@link wilderSudoku.Puzzle Puzzle}
  *
  */
 public class Square implements Cloneable {
@@ -121,7 +122,6 @@ public class Square implements Cloneable {
 	 * @param locked
 	 * @param initial
 	 * @param value
-	 * @param possibles
 	 */
 	private void copy(boolean locked, boolean initial, Number value) {
 		this.isInitial = initial;
