@@ -1,4 +1,7 @@
 package com.wildercoding.sudoku;
+
+import com.wildercoding.sudoku.exceptions.InvalidCoordinateException;
+
 /**
  * The Standard constant for referring to areas in sudoku. An area in the puzzle is a 
  * section of the 9x9 puzzle when it is equally divided into 3x3 pieces. the first section when looking at a puzzle from the top
@@ -155,10 +158,8 @@ public enum Area {
 	 * @param areaNumber
 	 *            a number 1-9
 	 * @returns the area
-	 * @throws InvalidAreaException
-	 *             if the areaNumber parameter is not the value 1-9
 	 */
-	static Area valueOf(int areaNumber) throws InvalidAreaException {
+	static Area valueOf(int areaNumber) {
 
 		switch (areaNumber) {
 		case 1:
@@ -180,12 +181,12 @@ public enum Area {
 		case 9:
 			return NINE;
 		default:
-			throw new InvalidAreaException("Invalid Area: " + areaNumber);
+			return null;
 		}
 	}
 
 	/**
-	 * Takes a {@link wilderSudoku.Coord coordinate} and returns the area in the
+	 * Takes a  coordinate and returns the area in the
 	 * puzzle where the coord is located
 	 * 
 	 * @param coord
