@@ -1,5 +1,3 @@
 # wilderSudoku
-A library used for loading, solving, and displaying sudokupuzzles
+A library used to create algorithms for solving 9x9 sudoku puzzles. 
 
-The core classes are in the wilderSudoku Package. 
-The Sudoku class is u
