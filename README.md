@@ -25,3 +25,5 @@ Represents the location of a square.
 ####Number
 A Resentation of the numbers 1-9
 ##How to test a Solver
+<!-- TODO Create how to test a sover text-->
+<!-- TODO Spell check and gramarcheck everything -->
